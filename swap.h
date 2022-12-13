@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:47:58 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/12 01:05:12 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/13 01:46:08 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 # include<unistd.h>
 # include<stdlib.h>
+# include<stdio.h>
 
-typedef	struct	list
+/*typedef	struct	list
 {
 	void		*content;
 	struct list	*next;
 }				stk_list;
-
+*/
 #endif
