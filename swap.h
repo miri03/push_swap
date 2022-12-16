@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:47:58 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/13 01:46:08 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/15 22:55:23 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,18 @@
 # include<stdlib.h>
 # include<stdio.h>
 
-/*typedef	struct	list
+typedef	struct	s_list
 {
 	void		*content;
-	struct list	*next;
-}				stk_list;
-*/
+	struct s_list	*next;
+}				t_list;
+
+int		is_numeric(char *s);
+t_list	*ft_lstnew(void *content);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+int		ft_isdigit(int c);
+int		ft_atoi(const char *str);
+char	**ft_split(char const *s, char c);
+
 #endif

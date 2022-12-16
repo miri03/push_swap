@@ -6,39 +6,17 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/13 02:14:24 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/15 23:29:18 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// argc == 1
-
 #include "swap.h"
 
-typedef	struct	list
+int	is_valide(char **s, int argc)
 {
-	void		*content;
-	struct list	*next;
-}				stk_list;
-
-int	is_numeric(char *s)
-{
-	while (*s != '\0')
-	{
-		if (*s >= '0' && *s <= '9')
-			s++;
-		else
-			return (0);
-	}
-	return (1);
-}	
-
-int	is_valid(char **s, int argc)
-{
-	int i;
+	int	i;
 
 	i = 0;
-	if (argc == 0)
-		return (0);
 	while (i < argc)
 	{
 		if (is_numeric(s[i]))
@@ -49,28 +27,47 @@ int	is_valid(char **s, int argc)
 	return (1);
 }
 
+t_list	**make_stack(char **args, int argc)
+{
+	char	**str;
+	t_list	**stack_a = NULL;
+	int		i;
+
+	i = 0;
+	int j = 0;
+	if (is_valide(&args[i], argc - 1))
+	{
+		str = ft_split(args[i], ' ');
+		while (j < 4)
+		{
+			printf("%s\n", str[j]);
+			j++;
+		}
+		*stack_a = ft_lstnew(str[i]);
+		i++;
+	
+		while (i < argc)
+		{
+			ft_lstadd_back(stack_a, ft_lstnew(&str[i]));
+			i++;
+		}
+	}
+	else
+	{
+		write(1, "Error\n", 6);
+		exit (0);
+	}
+	return (stack_a);
+}
+
 int main(int argc, char **argv)
 {
-	int i;
-	stk_list **stack_a;
+	int		i;
+	t_list	**stack_a;
 
 	i = 1;
-//func	stack_a =
+	if (argc < 2)
+		exit (0);
+	stack_a = make_stack(&argv[i], argc - 1);
 
-   if (is_valid(&argv[i], argc - 1))
-   {
-	   while (i < argc)
-	   {
-			stack_a = malloc(sizeof(stk_list));
-			if (stack_a == NULL) // free list ?
-				exit(0);
-			stack_a->content = argv[i];
-		i++;
-		stack_a->next = NULL;
-		}
-   }
-   else
-   {
-	   write(1, "Error\n", 6);
-	   exit (0);
-   }
+}
