@@ -6,50 +6,44 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/15 23:29:18 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/17 02:15:27 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swap.h"
 
-int	is_valide(char **s, int argc)
+void printList(t_list *head) //print stack
 {
-	int	i;
+    t_list *temp = head;
 
-	i = 0;
-	while (i < argc)
-	{
-		if (is_numeric(s[i]))
-			i++;
-		else
-			return (0);
-	}
-	return (1);
+    while(temp != NULL)
+    {
+         printf("%d->", temp->content);
+         temp = temp->next;
+    }
+    printf("NULL\n");
 }
 
-t_list	**make_stack(char **args, int argc)
+t_list	*make_stack(char **args, int argc)
 {
 	char	**str;
-	t_list	**stack_a = NULL;
+	t_list	*stack_a;
 	int		i;
+	int		j;
 
 	i = 0;
-	int j = 0;
-	if (is_valide(&args[i], argc - 1))
+	if (is_valide(&args[i], argc))
 	{
-		str = ft_split(args[i], ' ');
-		while (j < 4)
-		{
-			printf("%s\n", str[j]);
-			j++;
-		}
-		*stack_a = ft_lstnew(str[i]);
-		i++;
-	
 		while (i < argc)
 		{
-			ft_lstadd_back(stack_a, ft_lstnew(&str[i]));
+			str = ft_split(args[i], ' ');
 			i++;
+			j = 0;
+			while (str[j] != NULL)
+			{
+				ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(str[j])));
+				j++;
+			}
 		}
 	}
 	else
@@ -57,17 +51,23 @@ t_list	**make_stack(char **args, int argc)
 		write(1, "Error\n", 6);
 		exit (0);
 	}
+	printList(stack_a); //print stack
 	return (stack_a);
 }
 
 int main(int argc, char **argv)
 {
 	int		i;
-	t_list	**stack_a;
+	t_list	*stack_a;
+	char **str;
 
 	i = 1;
 	if (argc < 2)
 		exit (0);
 	stack_a = make_stack(&argv[i], argc - 1);
-
+	if (!check_doubles(stack_a))
+	{
+		write(1, "Error\n", 6);
+		exit (0);
+	}
 }
