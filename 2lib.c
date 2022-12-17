@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 20:40:08 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/17 02:20:18 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/17 18:33:59 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,20 @@ int	ft_atoi(const char *str)
 
 int	check_doubles(t_list *stack_a)
 {
-	t_list	*tmp;
-	t_list	*node;
+	t_list	*B;
 
-	tmp = stack_a;
 	while (stack_a->next != NULL)
 	{
-		//printf("OK\n");
-		while (node->next != NULL)
+		B = stack_a->next;
+	//	printf("test\n");
+		while (B->next != NULL)
 		{
-			node = stack_a->next;
-			if (stack_a->content == node->content)
+			if (stack_a->content == B->content)
 				return (0);
+			B = B->next;
 		}
-		stack_a->next = tmp->next;
-		printf("yes\n");
-		//tmp = stack_a->next;
+		stack_a = stack_a->next;
+		//printf("yes\n");
 	}
 	return (1);
 }
-
