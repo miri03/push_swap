@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 20:40:08 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/17 18:33:59 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/18 00:06:52 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	ft_atoi(const char *str)
 		if (str[i] == '-')
 			sign *= -1;
 		i++;
+		++i;
 	}
 	while (ft_isdigit(str[i]))
 	{
@@ -57,15 +58,13 @@ int	check_doubles(t_list *stack_a)
 	while (stack_a->next != NULL)
 	{
 		B = stack_a->next;
-	//	printf("test\n");
-		while (B->next != NULL)
+		while (B != NULL)
 		{
 			if (stack_a->content == B->content)
 				return (0);
 			B = B->next;
 		}
 		stack_a = stack_a->next;
-		//printf("yes\n");
 	}
 	return (1);
 }

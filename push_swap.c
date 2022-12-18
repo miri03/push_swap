@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/17 18:33:57 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/18 01:10:11 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void printList(t_list *head) //print stack
 
     while(temp != NULL)
     {
-         printf("%d->\n", temp->content);
+         printf("%d->", temp->content);
          temp = temp->next;
     }
     printf("NULL\n");
@@ -59,16 +59,14 @@ int main(int argc, char **argv)
 {
 	int		i;
 	t_list	*stack_a;
-	char **str;
 
 	i = 1;
 	if (argc < 2)
 		exit (0);
 	stack_a = make_stack(&argv[i], argc - 1);
-	if (!check_doubles(stack_a))
+	if (check_doubles(stack_a) == 0)
 	{
 		write(1, "Error\n", 6);
 		exit (0);
 	}
-	printf("OK");
 }
