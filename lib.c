@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:35:20 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/19 17:50:07 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/20 17:16:35 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,3 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (len);
 }
-/*
-int main()
-{
-	t_list *a = NULL;
-	ft_lstadd_back(&a, ft_lstnew(2));
-	printf("%d", a->content);
-	while (1)
-	{
-		;}
-}
-*/

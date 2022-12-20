@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/20 03:23:23 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/20 23:33:35 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ int main(int argc, char **argv)
 {
 	int		i;
 	t_list	*stack_a;
-//	t_list 	*tmp;
-	t_list	*stack_b = NULL;
+//	t_list	*stack_b = NULL;
 
 	i = 1;
 	if (argc < 2)
@@ -78,15 +77,16 @@ int main(int argc, char **argv)
 		write(1, "Error\n", 6);
 		exit (0);
 	}
-	swap_a(stack_a);
-	push_b(&stack_a, &stack_b);
-	swap_b(stack_b);
-	push_b(&stack_a, &stack_b);
-	push_a(&stack_a, &stack_b);
-
-
-
-
+//	swap_a(stack_a);
+//	push_b(&stack_a, &stack_b);
+//	swap_b(stack_b);
+//	push_b(&stack_a, &stack_b);
+//	push_a(&stack_a, &stack_b);
+//	rotate_a(&stack_a);
+//	rotate_b(&stack_b);
+//	rotate_a_b(&stack_a, &stack_b);
+	
+	rev_rotate_a(&stack_a);
 
 
 /*	while (stack_a != NULL)
@@ -96,7 +96,6 @@ int main(int argc, char **argv)
 		free(tmp);
 	}
 */
-
 
 }
 

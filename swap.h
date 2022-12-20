@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:47:58 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/20 02:21:23 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/20 21:55:28 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ void		swap_b(t_list *stack_b);
 void		swap_a_b(t_list *stack_a, t_list *stack_b);
 void		push_b(t_list **stack_a, t_list **stack_b);
 void		push_a(t_list **stack_a, t_list **stack_b);
+void		rotate_a(t_list **stack_a);
+void		rotate_b(t_list **stack_b);
+void		rotate_a_b(t_list **stack_a, t_list **stack_b);
+void		rev_rotate_a(t_list **stack_a);
 
 
 #endif

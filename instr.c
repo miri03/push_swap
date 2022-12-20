@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 15:15:21 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/20 03:23:21 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/20 23:33:32 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,75 @@ void	push_a(t_list	**stack_a, t_list **stack_b)
 
 }
 
-void	rotate_a(t_list *stack_a)
+void	rotate_a(t_list **stack_a)
 {
+	t_list	*tmp;
+
+	printf("RA :\n");
+
+	tmp = *stack_a;
+	*stack_a = (*stack_a)->next;
+	tmp->next = NULL;
+	ft_lstadd_back(stack_a, tmp);
 	
+	printList(*stack_a);
+}
+
+void	rotate_b(t_list **stack_b)
+{
+	t_list	*tmp;
+
+	printf("RB :\n");
+
+	tmp = *stack_b;
+	*stack_b = (*stack_b)->next;
+	tmp->next = NULL;
+	ft_lstadd_back(stack_b, tmp);
+	
+	printList(*stack_b);
+}
+
+
+void	rotate_a_b(t_list **stack_a, t_list **stack_b)
+{
+	printf("RR: \n\n");
+
+	rotate_a(stack_a);
+	rotate_b(stack_b);
+}
+
+t_list	*ft_newlast(t_list	*stack)
+{
+	t_list *tmp;
+	printf("infunc\n");
+	printList(stack);
+	while (stack->next != NULL)
+ 	{
+		stack = stack->next;
+		printf("stack %d\n", stack->content);
+		tmp = stack->next;
+	//	printf("tmp %d\n",tmp->content);
+		if (stack->next == NULL)
+		{
+			printf("result=%d\n",stack->content);
+			return (stack);
+		}
+	}
+
+	printf("KO");
+	return (NULL);
+}
+
+void	rev_rotate_a(t_list **stack_a)
+{
+//	t_list	*tmp;
+	t_list	*last;
+	t_list	*new_last;
+
+	last = ft_lstlast(*stack_a);
+	new_last = ft_newlast(*stack_a);
+//	tmp = *stack_a;
+//	last->next = tmp;
+//	ft_lstadd_front(stack_a, last);
+	printf("last->%d\n", new_last->content);
+}
