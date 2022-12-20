@@ -6,46 +6,11 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:35:20 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/18 01:10:14 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/19 17:50:07 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swap.h"
-
-int	is_valide(char **s, int argc)
-{
-	int	i;
-
-	i = 0;
-	while (i < argc)
-	{
-		if (check_error(s[i]))
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
-int	check_error(char *s)
-{
-	int i;
-
-	i = 0;
-	if (s[i] == '\0')
-		return (0);
-	while (s[i] != '\0')
-	{
-		if ((i == 0 || s[i - 1] == ' ') &&
-				(s[i] == '-' || s[i] == '+') && s[i + 1] != ' ')
-			i++;
-		if (ft_isdigit(s[i]) || s[i] == ' ')
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
 
 t_list	*ft_lstnew(int content)
 {
@@ -86,3 +51,26 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
+int	ft_lstsize(t_list *lst)
+{
+	int		len;
+
+	len = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		len++;
+	}
+	return (len);
+}
+/*
+int main()
+{
+	t_list *a = NULL;
+	ft_lstadd_back(&a, ft_lstnew(2));
+	printf("%d", a->content);
+	while (1)
+	{
+		;}
+}
+*/
