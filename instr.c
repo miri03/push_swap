@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 15:15:21 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/20 23:33:32 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/22 02:15:32 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,35 +138,45 @@ void	rotate_a_b(t_list **stack_a, t_list **stack_b)
 t_list	*ft_newlast(t_list	*stack)
 {
 	t_list *tmp;
-	printf("infunc\n");
-	printList(stack);
+
 	while (stack->next != NULL)
  	{
 		stack = stack->next;
-		printf("stack %d\n", stack->content);
 		tmp = stack->next;
-	//	printf("tmp %d\n",tmp->content);
-		if (stack->next == NULL)
-		{
-			printf("result=%d\n",stack->content);
+		if (tmp->next == NULL)
 			return (stack);
-		}
 	}
-
-	printf("KO");
 	return (NULL);
 }
 
 void	rev_rotate_a(t_list **stack_a)
 {
+	printf("RRA:\n");
+
 //	t_list	*tmp;
 	t_list	*last;
 	t_list	*new_last;
 
 	last = ft_lstlast(*stack_a);
 	new_last = ft_newlast(*stack_a);
-//	tmp = *stack_a;
-//	last->next = tmp;
-//	ft_lstadd_front(stack_a, last);
-	printf("last->%d\n", new_last->content);
+	new_last->next = NULL;
+//	last->next = *stack_a;
+
+	ft_lstadd_front(stack_a, last);
+	printList(*stack_a);
+}
+
+void	rev_rotate_b(t_list **stack_b)
+{
+	printf("RRB:\n");
+
+	t_list	*last;
+	t_list	*new_last;
+
+	last = ft_lstlast(*stack_b);
+	new_last = ft_newlast(*stack_b);
+	new_last->next = NULL;
+	ft_lstadd_front(stack_b, last);
+
+	printList(*stack_b);
 }

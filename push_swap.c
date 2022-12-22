@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/20 23:33:35 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/22 02:15:35 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void printList(t_list *head) //print stack
 {
     t_list *temp = head;
 
-    while(temp != NULL)
+    while (temp != NULL)
     {
          printf("%d\n", temp->content);
          temp = temp->next;
@@ -87,7 +87,8 @@ int main(int argc, char **argv)
 //	rotate_a_b(&stack_a, &stack_b);
 	
 	rev_rotate_a(&stack_a);
-
+//	rev_rotate_a(&stack_a);
+//	rev_rotate_b(&stack_b);
 
 /*	while (stack_a != NULL)
 	{
