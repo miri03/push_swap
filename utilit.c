@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 20:40:08 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/19 17:39:45 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/22 21:39:44 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ int	is_valide(char **s, int argc)
 
 int	check_error(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (s[i] == '\0')
 		return (0);
 	while (s[i] != '\0')
 	{
-		if ((i == 0 || s[i - 1] == ' ') &&
-				(s[i] == '-' || s[i] == '+') && s[i + 1] != ' ')
+		if ((i == 0 || s[i - 1] == ' ')
+			&& (s[i] == '-' || s[i] == '+') && s[i + 1] != ' ')
 			i++;
 		if (ft_isdigit(s[i]) || s[i] == ' ')
 			i++;
@@ -53,16 +53,14 @@ void	int_max(unsigned int result, int sign)
 	{
 		if (result == 2147483648 && sign < 0)
 			return ;
-		write (1, "Error\n", 6);
-		exit (0);
-	}
+		error();	}
 }
 
 int	ft_atoi(const char *str)
 {
 	unsigned int	result;
-	int					i;
-	int					sign;
+	int				i;
+	int				sign;
 
 	i = 0;
 	sign = 1;
@@ -86,19 +84,18 @@ int	ft_atoi(const char *str)
 
 int	check_doubles(t_list *stack_a)
 {
-	t_list	*B;
+	t_list	*b;
 
 	while (stack_a->next != NULL)
 	{
-		B = stack_a->next;
-		while (B != NULL)
+		b = stack_a->next;
+		while (b != NULL)
 		{
-			if (stack_a->content == B->content)
+			if (stack_a->content == b->content)
 				return (0);
-			B = B->next;
+			b = b->next;
 		}
 		stack_a = stack_a->next;
 	}
 	return (1);
 }
-

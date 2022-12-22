@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib1.c                                             :+:      :+:    :+:   */
+/*   utilit1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/18 17:31:39 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/22 21:40:08 by meharit          ###   ########.fr       */
+/*   Created: 2022/12/22 17:57:26 by meharit           #+#    #+#             */
+/*   Updated: 2022/12/22 21:43:28 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swap.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	error(void)
 {
-	new->next = *lst;
-	*lst = new;
+	write (2, "Error\n", 6);
+	exit(1);
+}
+
+void	free_str(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
 }

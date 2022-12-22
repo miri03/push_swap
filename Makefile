@@ -6,7 +6,7 @@
 #    By: meharit <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/17 19:37:49 by meharit           #+#    #+#              #
-#    Updated: 2022/12/18 19:19:16 by meharit          ###   ########.fr        #
+#    Updated: 2022/12/22 18:05:58 by meharit          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,14 +19,20 @@ CFILES = push_swap.c \
 		 lib1.c \
 		 split.c \
 		 instr.c \
+		 instr1.c \
+		 instr2.c \
 		 utilit.c \
+		 utilit1.c \
 
 OBJ = push_swap.o \
 	  lib.o \
 	  lib1.o \
 	  split.o \
 	  instr.o \
+	  instr1.o \
+	  instr2.o \
 	  utilit.o \
+	  utilit1.o \
 
 RM = rm -rf 
 

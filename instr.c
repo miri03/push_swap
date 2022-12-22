@@ -6,13 +6,13 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 15:15:21 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/22 02:15:32 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/22 21:26:11 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swap.h"
 
-void	swap_a(t_list *stack_a)
+void	swap_a(t_list *stack_a, int ss)
 {
 	t_list	*second;
 	int		tmp;
@@ -24,11 +24,11 @@ void	swap_a(t_list *stack_a)
 		stack_a->content = second->content;
 		second->content = tmp;
 	}
-	printf("sa\n");
-	printList(stack_a); //
+	if (ss == 0)
+		write(1, "sa\n", 3);
 }
 
-void	swap_b(t_list *stack_b)
+void	swap_b(t_list *stack_b, int ss)
 {
 	t_list	*second;
 	int		tmp;
@@ -40,27 +40,21 @@ void	swap_b(t_list *stack_b)
 		stack_b->content = second->content;
 		second->content = tmp;
 	}
-	printf("sb\n");
-	printList(stack_b); //
+	if (ss == 0)
+		write(1, "sb\n", 3);
 }
 
 void	swap_a_b(t_list *stack_a, t_list *stack_b)
 {
-
-	printf("SS: \n");
-	printf("stack_a\n");
-	printList(stack_a);
-	printf("stack_b\n");
-	printList(stack_b);
-	swap_a(stack_a);
-	swap_b(stack_b);
+	swap_a(stack_a, 1);
+	swap_b(stack_b, 1);
+	write(1, "ss\n", 3);
 }
 
 void	push_b(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*tmp_a;
 	t_list	*tmp_b;
-	printf("PB: \n");
 
 	if (ft_lstsize(*stack_a) < 1)
 		return ;
@@ -69,19 +63,13 @@ void	push_b(t_list **stack_a, t_list **stack_b)
 	*stack_b = *stack_a;
 	(*stack_b)->next = tmp_b;
 	*stack_a = tmp_a;
-
-	printf("stack_a\n");
-	printList(*stack_a);
-	printf("stack_b\n");
-	printList(*stack_b);
+	write(1, "pb\n", 3);
 }
 
 void	push_a(t_list	**stack_a, t_list **stack_b)
 {
 	t_list	*tmp_a;
 	t_list	*tmp_b;
-
-	printf("PA: \n");
 
 	if (ft_lstsize(*stack_b) > 0)
 	{
@@ -91,92 +79,5 @@ void	push_a(t_list	**stack_a, t_list **stack_b)
 		(*stack_a)->next = tmp_a;
 		*stack_b = tmp_b;
 	}
-	printf("stack_a\n");
-	printList(*stack_a);
-	printf("stack_b\n");
-	printList(*stack_b);
-
-}
-
-void	rotate_a(t_list **stack_a)
-{
-	t_list	*tmp;
-
-	printf("RA :\n");
-
-	tmp = *stack_a;
-	*stack_a = (*stack_a)->next;
-	tmp->next = NULL;
-	ft_lstadd_back(stack_a, tmp);
-	
-	printList(*stack_a);
-}
-
-void	rotate_b(t_list **stack_b)
-{
-	t_list	*tmp;
-
-	printf("RB :\n");
-
-	tmp = *stack_b;
-	*stack_b = (*stack_b)->next;
-	tmp->next = NULL;
-	ft_lstadd_back(stack_b, tmp);
-	
-	printList(*stack_b);
-}
-
-
-void	rotate_a_b(t_list **stack_a, t_list **stack_b)
-{
-	printf("RR: \n\n");
-
-	rotate_a(stack_a);
-	rotate_b(stack_b);
-}
-
-t_list	*ft_newlast(t_list	*stack)
-{
-	t_list *tmp;
-
-	while (stack->next != NULL)
- 	{
-		stack = stack->next;
-		tmp = stack->next;
-		if (tmp->next == NULL)
-			return (stack);
-	}
-	return (NULL);
-}
-
-void	rev_rotate_a(t_list **stack_a)
-{
-	printf("RRA:\n");
-
-//	t_list	*tmp;
-	t_list	*last;
-	t_list	*new_last;
-
-	last = ft_lstlast(*stack_a);
-	new_last = ft_newlast(*stack_a);
-	new_last->next = NULL;
-//	last->next = *stack_a;
-
-	ft_lstadd_front(stack_a, last);
-	printList(*stack_a);
-}
-
-void	rev_rotate_b(t_list **stack_b)
-{
-	printf("RRB:\n");
-
-	t_list	*last;
-	t_list	*new_last;
-
-	last = ft_lstlast(*stack_b);
-	new_last = ft_newlast(*stack_b);
-	new_last->next = NULL;
-	ft_lstadd_front(stack_b, last);
-
-	printList(*stack_b);
+	write(1, "pa\n", 3);
 }

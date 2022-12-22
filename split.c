@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 20:17:21 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/19 18:11:07 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/22 18:09:56 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ static void	ft_alloc(char **result, char const *s, char c, int size)
 	}
 	result[i] = NULL;
 }
+
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
@@ -101,12 +102,3 @@ char	**ft_split(char const *s, char c)
 	ft_alloc(result, s, c, size);
 	return (result);
 }
-
-/*
-int main()
-{
-	char **str = ft_split("hello it's me", ' ');
-	while (1)
-	{
-		;}
-}*/

@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib1.c                                             :+:      :+:    :+:   */
+/*   instr2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/18 17:31:39 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/22 21:40:08 by meharit          ###   ########.fr       */
+/*   Created: 2022/12/22 18:04:19 by meharit           #+#    #+#             */
+/*   Updated: 2022/12/22 21:42:54 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "swap.h"
+#include"swap.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*ft_newlast(t_list	*stack)
 {
-	new->next = *lst;
-	*lst = new;
+	t_list	*tmp;
+
+	while (stack->next != NULL)
+	{
+		stack = stack->next;
+		tmp = stack->next;
+		if (tmp->next == NULL)
+			return (stack);
+	}
+	return (NULL);
+}
+
+void	rev_rotate(t_list **stack_a, t_list **stack_b)
+{
+	rev_rotate_a(stack_a, 1);
+	rev_rotate_b(stack_b, 1);
+	write(1, "rrr\n", 4);
 }
