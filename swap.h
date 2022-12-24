@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:47:58 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/22 18:13:13 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/24 01:44:39 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void		rotate_a_b(t_list **stack_a, t_list **stack_b);
 void		rev_rotate_a(t_list **stack_a, int rrr);
 void		rev_rotate_b(t_list **stack_b, int rrr);
 void		rev_rotate(t_list **stack_a, t_list **stack_b);
+void		sort_list(t_list *stack_a, t_list *stack_b);
 
 #endif

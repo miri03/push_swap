@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/22 23:25:22 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/24 02:15:05 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,25 +66,23 @@ t_list	*make_stack(char **args, int argc)
 	}
 	else
 		error();
-	printf("THE STACK\n");
-	printList(stack_a); 		//print stack
+//	printf("THE STACK\n");
+//	printList(stack_a); 		//print stack
 	return (stack_a);
 }
 
 int main(int argc, char **argv)
 {
-	int		i;
 	t_list	*stack_a = NULL;
 	t_list	*stack_b = NULL;
 
-	i = 1;
 	if (argc < 2)
 		exit (0);
 	stack_a = make_stack(argv, argc - 1);
 	if (check_doubles(stack_a) == 0)
 		error();
 
-
+/*
 	swap_a(stack_a, 0);
 	swap_b(stack_b, 0);
 	swap_a_b(stack_a, stack_b);
@@ -96,12 +94,21 @@ int main(int argc, char **argv)
 	rev_rotate_a(&stack_a, 0);
 	rev_rotate_b(&stack_b, 0);
 	rev_rotate(&stack_a, &stack_b);
+*/
 
+
+
+
+/*	
+	printf("THE STACK\n");
+	printList(stack_a); 		//print stack
+*/
 	deleteList(&stack_a); //
 	deleteList(&stack_b); //
 
 //	system("leaks push_swap");
 
+	sort_list(stack_a, stack_b);
 }
 
 
