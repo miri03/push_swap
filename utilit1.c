@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 17:57:26 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/25 16:03:43 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/26 20:02:54 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,38 @@ int	minValue(t_list *head)
     return (min);
 }
 
+void	utiliti(t_list *stack_a, t_list *stack_b)
+{
+	int	min;
+	int	index;
+	t_list	*tmp;
+
+	index = 1;
+	min = minValue(stack_a);
+	tmp = stack_a;
+	index = 0;
+	while (tmp->content != min)
+	{
+		tmp = tmp->next;
+		index++;
+	}
+	while (stack_a->content != min)
+	{
+		if (index <= ft_lstsize(stack_a)/2)
+			rotate_a(&stack_a, 0);
+		else
+			rev_rotate_a(&stack_a, 0);
+	}
+	push_b(&stack_a, &stack_b);
+}
+
 void	sort_five(t_list *stack_a, t_list *stack_b)
 {
 	int	min;
 	t_list	*tmp;
-	int index = 1;
+	int index;
 
+	index = 1;
 	min = minValue(stack_a);
 	tmp = stack_a;
 	while (tmp->content != min)
@@ -125,7 +151,6 @@ void	sort_five(t_list *stack_a, t_list *stack_b)
 		tmp = tmp->next;
 		index++;
 	}
-//	printf("i1=%d\n",index);
 	while (stack_a->content != min)
 	{
 		if (index <= ft_lstsize(stack_a)/2)
@@ -139,6 +164,7 @@ void	sort_five(t_list *stack_a, t_list *stack_b)
 		return ;
 	if (ft_lstsize(stack_a) > 3)
 	{
+//		utiliti(stack_a, stack_b);
 		min = minValue(stack_a);
 		tmp = stack_a;
 		index = 0;
@@ -147,7 +173,6 @@ void	sort_five(t_list *stack_a, t_list *stack_b)
 			tmp = tmp->next;
 			index++;
 		}
-		//printf("i2=%d\n",index);
 		while (stack_a->content != min)
 		{
 			if (index <= ft_lstsize(stack_a)/2)
@@ -156,10 +181,14 @@ void	sort_five(t_list *stack_a, t_list *stack_b)
 				rev_rotate_a(&stack_a, 0);
 		}
 		push_b(&stack_a, &stack_b);
+		
 	}
 	sort_list(stack_a, stack_b);
 	while (ft_lstsize(stack_b) >= 1)
 		push_a(&stack_a, &stack_b);
+	printf("content=%d\n",stack_a->content);
+	printf("-----------\nEND\n");
+	printList(stack_a);
 }
 
 void	sort_list(t_list *stack_a, t_list *stack_b)
@@ -173,7 +202,7 @@ void	sort_list(t_list *stack_a, t_list *stack_b)
 			else
 				sort_three(stack_a);
 		}
-		
+
 		else if (ft_lstsize(stack_a) == 4 || ft_lstsize(stack_a) == 5)
 			sort_five(stack_a, stack_b);
 		/*

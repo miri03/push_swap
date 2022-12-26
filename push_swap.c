@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/25 16:09:34 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/26 20:14:01 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,9 @@ int main(int argc, char **argv)
 */
 
 
-//	printList(stack_a);
 	sort_list(stack_a, stack_b);
+
+	printList(stack_a);
 
 
 
