@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 20:40:08 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/25 12:30:48 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/27 17:30:15 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	int_max(unsigned int result, int sign)
 	{
 		if (result == 2147483648 && sign < 0)
 			return ;
-		error();	}
+		error();
+	}
 }
 
 int	ft_atoi(const char *str)

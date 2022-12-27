@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:02:38 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/26 20:12:03 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/27 17:27:43 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,13 @@
 void	rotate_a(t_list **stack_a, int rr)
 {
 	t_list	*tmp;
+
 	if (ft_lstsize(*stack_a) > 0)
 	{
 		tmp = *stack_a;
 		*stack_a = (*stack_a)->next;
 		tmp->next = NULL;
 		ft_lstadd_back(stack_a, tmp);
-		/*while ((*stack_a)->next != NULL)
-		{
-			free(*stack_a); //
-			*stack_a = (*stack_a)->next;
-		}*/
 	}
 	if (rr == 0)
 		write(1, "ra\n", 3);
@@ -62,7 +58,7 @@ void	rev_rotate_a(t_list **stack_a, int rrr)
 	{
 		if (ft_lstsize(*stack_a) == 2)
 		{
-			swap_a(*stack_a, 1);
+			swap_a(stack_a, 1);
 		}
 		else
 		{
@@ -71,7 +67,6 @@ void	rev_rotate_a(t_list **stack_a, int rrr)
 			new_last->next = NULL;
 			ft_lstadd_front(stack_a, last);
 		}
-	//	free(*stack_a); //?
 	}
 	if (rrr == 0)
 		write(1, "rra\n", 4);

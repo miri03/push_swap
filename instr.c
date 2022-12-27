@@ -6,22 +6,22 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 15:15:21 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/26 20:13:33 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/27 14:14:16 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swap.h"
 
-void	swap_a(t_list *stack_a, int ss)
+void	swap_a(t_list **stack_a, int ss)
 {
 	t_list	*second;
 	int		tmp;
 
-	if (ft_lstsize(stack_a) > 1)
+	if (ft_lstsize(*stack_a) > 1)
 	{
-		tmp = stack_a->content;
-		second = stack_a->next;
-		stack_a->content = second->content;
+		tmp = (*stack_a)->content;
+		second = (*stack_a)->next;
+		(*stack_a)->content = second->content;
 		second->content = tmp;
 	}
 	if (ss == 0)
@@ -46,7 +46,7 @@ void	swap_b(t_list *stack_b, int ss)
 
 void	swap_a_b(t_list *stack_a, t_list *stack_b)
 {
-	swap_a(stack_a, 1);
+	swap_a(&stack_a, 1);
 	swap_b(stack_b, 1);
 	write(1, "ss\n", 3);
 }
@@ -66,7 +66,7 @@ void	push_b(t_list **stack_a, t_list **stack_b)
 	write(1, "pb\n", 3);
 }
 
-void	push_a(t_list	**stack_a, t_list **stack_b)
+void	push_a(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*tmp_a;
 	t_list	*tmp_b;

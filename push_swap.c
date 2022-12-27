@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/26 20:14:01 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/27 17:29:49 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,19 @@ t_list	*make_stack(char **args, int argc)
 			free_str(str);
 			free(str);
 		}
-	
 	}
 	else
 		error();
-//	printf("THE STACK\n");
-//	printList(stack_a); 		//print stack
 	return (stack_a);
 }
 
 int main(int argc, char **argv)
 {
-	t_list	*stack_a = NULL;
-	t_list	*stack_b = NULL;
+	t_list	*stack_a;
+	t_list	*stack_b;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc < 2)
 		exit (0);
 	stack_a = make_stack(argv, argc - 1);
@@ -96,34 +95,16 @@ int main(int argc, char **argv)
 	rev_rotate(&stack_a, &stack_b);
 */
 
-
-/*	
-	printf("THE STACK\n");
-	printList(stack_a); 		//print stack
-*/
-
-/*
-	push_b(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
-	printf("%d\n",ft_lstsize(stack_b));
-	push_a(&stack_a, &stack_b);
-	printf("%d\n",ft_lstsize(stack_b));
-*/
-
-
-	sort_list(stack_a, stack_b);
-
 	printList(stack_a);
-
-
-
+	printf("--------\n");
+	sort_list(&stack_a, &stack_b);
+	printf("--------\n");
+	printList(stack_a);
 
 //	deleteList(&stack_a); //
 //	deleteList(&stack_b); //
 
 
-//	system("leaks push_swap");
-
-
+	system("leaks push_swap");
 }
 
