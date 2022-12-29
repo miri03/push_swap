@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:03:07 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/27 17:35:39 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/28 22:48:07 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,14 @@ int	min_value(t_list *head)
 		current = current->next;
 	}
 	return (min);
+}
+
+int	ft_check_pb(t_list **stack_a, t_list **stack_b)
+{
+	if (!is_sorted(*stack_a))
+	{
+		push_b(stack_a, stack_b);
+		return (1);
+	}
+	return (0);
 }

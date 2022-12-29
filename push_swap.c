@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/27 17:29:49 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/28 23:54:47 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,16 +95,16 @@ int main(int argc, char **argv)
 	rev_rotate(&stack_a, &stack_b);
 */
 
-	printList(stack_a);
-	printf("--------\n");
+//	printList(stack_a);
+//	printf("--------\n");
 	sort_list(&stack_a, &stack_b);
-	printf("--------\n");
-	printList(stack_a);
-
+//	printf("--------\n");
+	//printList(stack_a);
+//
 //	deleteList(&stack_a); //
 //	deleteList(&stack_b); //
 
 
-	system("leaks push_swap");
+//	system("leaks push_swap");
 }
 
