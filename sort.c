@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:00:43 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/29 00:14:23 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/30 01:13:31 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,42 +43,14 @@ void	sort_three(t_list **stack_a)
 void	sort_five(t_list **stack_a, t_list **stack_b)
 {
 	int		min;
-	t_list	*tmp;
-	int		index;
-
-	index = 1;
-	min = min_value(*stack_a);
-	tmp = *stack_a;
-	while (tmp->content != min)
-	{
-		tmp = tmp->next;
-		index++;
-	}
-	while ((*stack_a)->content != min)
-	{
-		if (index <= 3)
-			rotate_a(stack_a, 0);
-		else
-			rev_rotate_a(stack_a, 0);
-	}	
-	if (!ft_check_pb(stack_a, stack_b))
-		return ;
-	utiliti(stack_a, stack_b);
-	sort_list(stack_a, stack_b);
-	while (ft_lstsize(*stack_b) >= 1)
-		push_a(stack_a, stack_b);
-}
-
-void	sort_hundred(t_list **stack_a, t_list **stack_b)
-{
-	int		min;
 	int		index;
 	t_list	*tmp;
 
-	index = 0;
 	while (ft_lstsize(*stack_a) > 3)
 	{
-		printf("size= %d\n", ft_lstsize(*stack_a)); 
+
+		index = 0;
+		tmp = *stack_a;
 		min = min_value(*stack_a);
 		while (tmp->content != min)
 		{
@@ -87,21 +59,25 @@ void	sort_hundred(t_list **stack_a, t_list **stack_b)
 		}
 		while ((*stack_a)->content != min)
 		{
-			if (index < ft_lstsize(*stack_a) / 2)
+			if (index <= ft_lstsize(*stack_a) / 2)
 				rotate_a(stack_a, 0);
 			else
 				rev_rotate_a(stack_a, 0);
 		}
 		if (!ft_check_pb(stack_a, stack_b))
-			return ;
+			break ;
 	}
-
-	printList(*stack_a);
-//	sort_list(stack_a, stack_b);
-//	while (ft_lstsize(*stack_b) >= 1)
-//		push_a(stack_a, stack_b);
+	sort_list(stack_a, stack_b);
+	while (ft_lstsize(*stack_b) >= 1)
+		push_a(stack_a, stack_b);
 }
+/*
+void	sort_hundred(t_list **stack_a, t_list **stack_b)
+{
+	char	*sorted;
 
+	sorted = array_sort(stack_a);
+*/
 void	sort_list(t_list **stack_a, t_list **stack_b)
 {
 	if (!is_sorted(*stack_a))
@@ -115,8 +91,8 @@ void	sort_list(t_list **stack_a, t_list **stack_b)
 		}
 		else if (ft_lstsize(*stack_a) == 4 || ft_lstsize(*stack_a) == 5)
 			sort_five(stack_a, stack_b);
-		else if (ft_lstsize(*stack_a) > 5 && ft_lstsize(*stack_a) <= 100)
-			sort_hundred(stack_a, stack_b);
+	//	else if (ft_lstsize(*stack_a) > 5 && ft_lstsize(*stack_a) <= 100)
+	//		sort_hundred(stack_a, stack_b);
 		/*
 		else if (ft_lstsize(stack_a) > 100 && ft_lstsize(stack_a) <= 500)
 			sort_five_hundred(stack_a, stack_b);

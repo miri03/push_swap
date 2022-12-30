@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:03:07 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/28 22:48:07 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/30 01:30:02 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,6 @@ void	sort_three_s(t_list *first, t_list *third, t_list **stack_a)
 		rev_rotate_a(stack_a, 0);
 }
 
-void	utiliti(t_list **stack_a, t_list **stack_b)
-{
-	int		min;
-	int		index;
-	t_list	*tmp;
-
-	index = 1;
-	min = min_value(*stack_a);
-	tmp = (*stack_a);
-	if (ft_lstsize(*stack_a) > 3)
-	{
-		while (tmp->content != min)
-		{
-			tmp = tmp->next;
-			index++;
-		}
-		while ((*stack_a)->content != min)
-		{
-			if (index <= 3)
-				rotate_a(stack_a, 0);
-			else
-				rev_rotate_a(stack_a, 0);
-		}
-		push_b(stack_a, stack_b);
-	}
-}
-
 int	min_value(t_list *head)
 {
 	int		min;
@@ -90,3 +63,81 @@ int	ft_check_pb(t_list **stack_a, t_list **stack_b)
 	}
 	return (0);
 }
+
+t_list*	copy_stack(t_list *stack_a)
+{
+    t_list* copy_head = malloc(sizeof(t_list*));
+    t_list* copy_tail = copy_head;
+
+    t_list* curr = stack_a;
+    while (curr != NULL)
+	{
+        copy_tail->next = malloc(sizeof(t_list*));
+        copy_tail->next->content = curr->content;
+        copy_tail = copy_tail->next;
+        curr = curr->next;
+    }
+
+    copy_tail->next = NULL;
+
+    return copy_head->next;
+}
+
+/*
+t_list	*copy_stack(t_list *stack_a)
+{
+	t_list	*copy;
+	t_list	*tmp;
+
+//	while (stack_a->next != NULL)
+//	{
+		printf("%d\n",stack_a->content);
+		tmp = stack_a;
+		ft_lstadd_back(&copy, ft_lstnew(stack_a->content));
+		stack_a = tmp->next;
+		printf("%d\n",stack_a->content);
+		printf("--------\n");
+		printList(stack_a);
+//	}
+	printf("--------\n");
+	printList(copy);
+	return (copy);
+}
+*/
+
+int	*array_sort(t_list *stack_a)
+{
+	int		*array  = NULL;
+	int		size;
+	int		i = 0;
+	t_list	*tmp;
+	t_list	*store;
+	int		min;
+
+	tmp = copy_stack(stack_a);
+	size = ft_lstsize(stack_a);
+//	while (ft_lstsize(stack_a) > 0)
+	while (size > i)
+	{
+		min = min_value(stack_a);
+		while (tmp->content != min)
+		{
+			store = tmp;
+			tmp = tmp->next;
+		}
+		store->next = tmp->next; // 
+
+		printf("OKK\n");
+		printf("%d\n", array[i]);
+		array[i] = min;
+		i++;
+	}/*
+	i=0;
+	while (i < 3)
+	{
+	printf("%d\n", array[i]);
+	i++;
+	}*/
+	return (array);
+}
+

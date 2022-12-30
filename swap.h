@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:47:58 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/28 22:48:56 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/30 01:14:42 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,8 @@ void		sort_three_s(t_list *first, t_list *second, t_list **stack_a);
 void		utiliti(t_list **stack_a, t_list **stack_b);
 int			min_value(t_list *head);
 int			ft_check_pb(t_list **stack_a, t_list **stack_b);
+
+
+int			*array_sort(t_list *stack_a);
 
 #endif
