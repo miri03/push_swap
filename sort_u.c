@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:03:07 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/31 05:48:44 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/31 08:32:08 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,79 +88,40 @@ int	min_array(t_list *stack_a, int min)
 	int	new_min;
 
 	new_min = stack_a->content;
-	printf("min=%d\n", min);
 	while (stack_a != NULL)
 	{
-		printf("%d %d\n",stack_a->content,new_min);
 		if (stack_a->next != NULL && (stack_a->content == min || min >= new_min))
 		{
-				
-				if (stack_a->next != NULL && stack_a->content > min)
-					new_min = stack_a->content; //
-				stack_a = stack_a->next;
+			if (stack_a->next != NULL && stack_a->content > min)
+				new_min = stack_a->content; //
+			stack_a = stack_a->next;
 		}
-		printf("===>%d %d\n",stack_a->content,new_min);
 		if (min > new_min || (stack_a->content < new_min && stack_a->content > min))
 			new_min = stack_a->content;
 		stack_a = stack_a->next;
 	}
-	printf("new_min=%d\n",new_min);
 	return (new_min);
 }
 
 int	*array_sort(t_list *stack_a)
 {
 	int	min;
-	int	*array = NULL;
+	int	*array;
 	int	size;
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	min = min_value(stack_a);
 	size = ft_lstsize(stack_a);
+	array = (int*)malloc(sizeof(int) * size);
+	array[i] = min;
 	i++;
 	while (size > i)
 	{
-	//	array[i] = min_array(stack_a, min);
-	printList(stack_a);
+		array[i] = min_array(stack_a, min);
 		min = min_array(stack_a, min);
-		printf("----------\n");
-	//	printf("%d %d\n",min,i);
 		i++;
 	}
 	return (array);
 }
-
-
-
-/*
-int	*array_sort(t_list *stack_a)
-{
-	int		*array  = NULL;
-	int		size;
-	int		i = 0;
-	t_list	*tmp;
-	t_list	*store;
-	int		min;
-
-	tmp = copy_stack(stack_a);
-	size = ft_lstsize(stack_a);
-//	while (ft_lstsize(stack_a) > 0)
-	while (size > i)
-	{
-		min = min_value(stack_a);
-		while (tmp->content != min)
-		{
-			store = tmp;
-			tmp = tmp->next;
-		}
-		store->next = tmp->next; // 
-
-		printf("OKK\n");
-		printf("%d\n", array[i]);
-		array[i] = min;
-		i++;
-	}	return (array);
-}
-*/
-
 

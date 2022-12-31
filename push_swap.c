@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/31 05:49:24 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/31 09:10:20 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int		*array ;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -98,7 +97,7 @@ int main(int argc, char **argv)
 
 //	printList(stack_a);
 //	printf("--------\n");
-//	sort_list(&stack_a, &stack_b);
+	sort_list(&stack_a, &stack_b);
 //	printf("--------\n");
 //	printList(stack_a);
 //
@@ -106,7 +105,6 @@ int main(int argc, char **argv)
 //	deleteList(&stack_b); //
 
 
-	array = array_sort(stack_a);
 
 //	system("leaks push_swap");
 }
