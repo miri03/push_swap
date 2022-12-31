@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:03:07 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/30 01:30:02 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/31 05:48:44 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,28 +83,56 @@ t_list*	copy_stack(t_list *stack_a)
     return copy_head->next;
 }
 
-/*
-t_list	*copy_stack(t_list *stack_a)
+int	min_array(t_list *stack_a, int min)
 {
-	t_list	*copy;
-	t_list	*tmp;
+	int	new_min;
 
-//	while (stack_a->next != NULL)
-//	{
-		printf("%d\n",stack_a->content);
-		tmp = stack_a;
-		ft_lstadd_back(&copy, ft_lstnew(stack_a->content));
-		stack_a = tmp->next;
-		printf("%d\n",stack_a->content);
-		printf("--------\n");
-		printList(stack_a);
-//	}
-	printf("--------\n");
-	printList(copy);
-	return (copy);
+	new_min = stack_a->content;
+	printf("min=%d\n", min);
+	while (stack_a != NULL)
+	{
+		printf("%d %d\n",stack_a->content,new_min);
+		if (stack_a->next != NULL && (stack_a->content == min || min >= new_min))
+		{
+				
+				if (stack_a->next != NULL && stack_a->content > min)
+					new_min = stack_a->content; //
+				stack_a = stack_a->next;
+		}
+		printf("===>%d %d\n",stack_a->content,new_min);
+		if (min > new_min || (stack_a->content < new_min && stack_a->content > min))
+			new_min = stack_a->content;
+		stack_a = stack_a->next;
+	}
+	printf("new_min=%d\n",new_min);
+	return (new_min);
 }
-*/
 
+int	*array_sort(t_list *stack_a)
+{
+	int	min;
+	int	*array = NULL;
+	int	size;
+	int	i = 0;
+
+	min = min_value(stack_a);
+	size = ft_lstsize(stack_a);
+	i++;
+	while (size > i)
+	{
+	//	array[i] = min_array(stack_a, min);
+	printList(stack_a);
+		min = min_array(stack_a, min);
+		printf("----------\n");
+	//	printf("%d %d\n",min,i);
+		i++;
+	}
+	return (array);
+}
+
+
+
+/*
 int	*array_sort(t_list *stack_a)
 {
 	int		*array  = NULL;
@@ -131,13 +159,8 @@ int	*array_sort(t_list *stack_a)
 		printf("%d\n", array[i]);
 		array[i] = min;
 		i++;
-	}/*
-	i=0;
-	while (i < 3)
-	{
-	printf("%d\n", array[i]);
-	i++;
-	}*/
-	return (array);
+	}	return (array);
 }
+*/
+
 

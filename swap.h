@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:47:58 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/30 01:14:42 by meharit          ###   ########.fr       */
+/*   Updated: 2022/12/31 01:46:16 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ int			ft_check_pb(t_list **stack_a, t_list **stack_b);
 
 
 int			*array_sort(t_list *stack_a);
+
+t_list		*copy_stack(t_list *stack_a);
 
 #endif
