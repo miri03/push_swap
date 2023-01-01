@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 15:15:21 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/31 09:07:49 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/01 15:40:20 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ void	swap_a(t_list **stack_a, int ss)
 		write(1, "sa\n", 3);
 }
 
-void	swap_b(t_list *stack_b, int ss)
+void	swap_b(t_list **stack_b, int ss)
 {
 	t_list	*second;
 	int		tmp;
 
-	if (ft_lstsize(stack_b) > 1)
+	if (ft_lstsize(*stack_b) > 1)
 	{
-		tmp = stack_b->content;
-		second = stack_b->next;
-		stack_b->content = second->content;
+		tmp = (*stack_b)->content;
+		second = (*stack_b)->next;
+		(*stack_b)->content = second->content;
 		second->content = tmp;
 	}
 	if (ss == 0)
@@ -47,10 +47,11 @@ void	swap_b(t_list *stack_b, int ss)
 void	swap_a_b(t_list *stack_a, t_list *stack_b)
 {
 	swap_a(&stack_a, 1);
-	swap_b(stack_b, 1);
+	swap_b(&stack_b, 1);
 	write(1, "ss\n", 3);
 }
 
+/*
 void	push_b(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*tmp_a;
@@ -63,6 +64,22 @@ void	push_b(t_list **stack_a, t_list **stack_b)
 	*stack_b = *stack_a;
 	(*stack_b)->next = tmp_b;
 	*stack_a = tmp_a;
+	write(1, "pb\n", 3);
+}*/
+
+void	push_b(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*tmp_a;
+	t_list	*tmp_b;
+
+	if (ft_lstsize(*stack_a) > 0)
+	{
+		tmp_a = (*stack_a)->next;
+		tmp_b = *stack_b;
+		*stack_b = *stack_a;
+		(*stack_b)->next = tmp_b;
+		*stack_a = tmp_a;
+	}
 	write(1, "pb\n", 3);
 }
 

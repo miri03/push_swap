@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:47:58 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/31 01:46:16 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/01 15:39:26 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		error(void);
 void		free_str(char **str);
 
 void		swap_a(t_list **stack_a, int ss);
-void		swap_b(t_list *stack_b, int ss);
+void		swap_b(t_list **stack_b, int ss);
 void		swap_a_b(t_list *stack_a, t_list *stack_b);
 void		push_b(t_list **stack_a, t_list **stack_b);
 void		push_a(t_list **stack_a, t_list **stack_b);

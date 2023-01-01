@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:00:43 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/31 14:27:14 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/01 22:02:26 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	sort_hundred(t_list **stack_a, t_list **stack_b)
 	int		start;
 	int		end;
 	int		st;
+	int		content;
 
 	sorted = array_sort(*stack_a);
 	size = ft_lstsize(*stack_a); 
@@ -109,36 +110,40 @@ void	sort_hundred(t_list **stack_a, t_list **stack_b)
 	start = middle - offset;
 	end = middle + offset;
 	st = start;
-
-		printf("start=%d end=%d offset=%d\n",start,end,offset);
 	while (ft_lstsize(*stack_a) > 1)
 	{
 		st = start;
-		while (st <= end)
-		{
-			//printf("----------\nstart=%d end=%d num =%d\n",st,end,sorted[st]);
-			//printList(*stack_a);
-
+	//	while (start >= 0)
+	//	{
+			while (st <= end)
+			{
 			tmp = *stack_a;
-			index = 0;
+			index = 0;		
+
 			while (tmp->next != NULL)
 			{
 				if (tmp->content == sorted[st])
 				{
-			//		printf("OK\n");
-				//	printf("index=%d num=%d size/2=%d\n", index, sorted[st], ft_lstsize(*stack_a)/2);
+			//		printf("num=%d st=%d end=%d\n", sorted[st],st,end);
 					if (index < ft_lstsize(*stack_a)/2)//		if first
 					{
 						while ((*stack_a)->content != sorted[st])
 							rotate_a(stack_a, 0);
-						push_b(stack_a, stack_b);
 					}
 					else
 					{
 						while ((*stack_a)->content != sorted[st])
 							rev_rotate_a(stack_a, 0);
-						push_b(stack_a, stack_b);
 					}
+					if (*stack_b != NULL)
+						content = (*stack_b)->content;
+					push_b(stack_a, stack_b);
+				//	printf("stack_b->%d\n",content);
+					if (sorted[st] < content && ft_lstsize(*stack_b) > 1)
+						rotate_b(stack_b, 0);
+				//	printf("\n------------\n");
+				//	printList(*stack_b);
+				//	printf("------------\n\n");
 					break ;
 				}
 				index++;
@@ -146,12 +151,23 @@ void	sort_hundred(t_list **stack_a, t_list **stack_b)
 			}
 			st++;
 		}
+		//	printf("st=%d end=%d\n",st,end);
+		//	if (st >= end)
+		//	{
+		//		printf("KO\n");
+		//	}
 		end += offset;
 		start -= offset;
-		printf("start=%d end=%d\n",start,end);
+	//	printf("end=%d start=%d size=%d\n",end,start,ft_lstsize(*stack_a));
+	
+	//	}
+	//	if (start < 0 && ft_lstsize(*stack_a) > 1)
+	//		break ;
 	}
 	if (ft_lstsize(*stack_a) == 1)
 		push_b(stack_a,stack_b);
+	printf("end\n");
+	printList(*stack_b);
 }
 
 void	sort_list(t_list **stack_a, t_list **stack_b)
@@ -167,7 +183,7 @@ void	sort_list(t_list **stack_a, t_list **stack_b)
 		}
 		else if (ft_lstsize(*stack_a) == 4 || ft_lstsize(*stack_a) == 5)
 			sort_five(stack_a, stack_b);
-		else if (ft_lstsize(*stack_a) > 5 && ft_lstsize(*stack_a) <= 100)
+		else if (ft_lstsize(*stack_a) > 5 && ft_lstsize(*stack_a) <= 500)
 			sort_hundred(stack_a, stack_b);
 		/*
 		else if (ft_lstsize(stack_a) > 100 && ft_lstsize(stack_a) <= 500)

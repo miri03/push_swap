@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:02:38 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/31 09:10:00 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/01 16:38:45 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,30 @@ void	rotate_a(t_list **stack_a, int rr)
 {
 	t_list	*tmp;
 
-	if (ft_lstsize(*stack_a) > 0)
+	if (ft_lstsize(*stack_a) > 1)
 	{
 		tmp = *stack_a;
 		*stack_a = (*stack_a)->next;
 		tmp->next = NULL;
 		ft_lstadd_back(stack_a, tmp);
+		if (rr == 0)
+			write(1, "ra\n", 3);
 	}
-	if (rr == 0)
-		write(1, "ra\n", 3);
 }
 
 void	rotate_b(t_list **stack_b, int rr)
 {
 	t_list	*tmp;
 
-	if (ft_lstsize(*stack_b) > 0)
+	if (ft_lstsize(*stack_b) > 1)
 	{
 		tmp = *stack_b;
 		*stack_b = (*stack_b)->next;
 		tmp->next = NULL;
 		ft_lstadd_back(stack_b, tmp);
+		if (rr == 0)
+			write(1, "rb\n", 3);
 	}
-	if (rr == 0)
-		write(1, "rb\n", 3);
 }
 
 void	rotate_a_b(t_list **stack_a, t_list **stack_b)
@@ -80,7 +80,7 @@ void	rev_rotate_b(t_list **stack_b, int rrr)
 	if (ft_lstsize(*stack_b) > 1)
 	{
 		if (ft_lstsize(*stack_b) == 2)
-			swap_b(*stack_b, 1);
+			swap_b(stack_b, 1);
 		else
 		{
 			last = ft_lstlast(*stack_b);
