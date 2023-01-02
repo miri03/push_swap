@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:00:43 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/02 23:08:27 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/03 00:14:42 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	sort_five(t_list **stack_a, t_list **stack_b)
 
 	while (ft_lstsize(*stack_a) > 3)
 	{
-
 		index = 0;
 		tmp = *stack_a;
 		min = min_value(*stack_a);
@@ -129,8 +128,7 @@ int	chunk(t_list **stack_a, t_list **stack_b, int start, int end, int middle, in
 				return (1);
 			}
 		}
-
-		else if (tmp->content >= array[start] && tmp->content <= array[end])
+		if (tmp->content >= array[start] && tmp->content <= array[end])
 		{
 			sort_b(stack_a, stack_b, tmp->content, array[middle]);
 			return (1);
@@ -142,32 +140,25 @@ int	chunk(t_list **stack_a, t_list **stack_b, int start, int end, int middle, in
 
 void	sort_hundred(t_list **stack_a, t_list **stack_b)
 {
+	list	var;
 	int		*array;
-	int		size;
-	int		n;
-	int		middle;
-	int		offset;
-	int		start;
-	int		end;
 
-	size = ft_lstsize(*stack_a);
-	n = ft_n(*stack_a);
-	middle = size / 2;
-	offset = size / n;
-	start = middle - offset;
-	end = middle + offset;
+	var.size = ft_lstsize(*stack_a);
+	var.middle = (var.size) / 2;
+	var.offset = (var.size) / ft_n(*stack_a);
+	var.start = var.middle - var.offset;
+	var.end = var.middle + var.offset;
 	array = array_sort(*stack_a);
+
 	while ((*stack_a) != NULL)
 	{
-		while (!chunk(stack_a, stack_b, start, end, middle, array, size)) 
+		while (!chunk(stack_a, stack_b, var.start, var.end, var.middle, array, var.size)) 
 		{
-			start = start - offset;
-			end = end + offset;
-		//	if (end > size || start < 0)
-		//		break;
+			var.start = var.start - var.offset;
+			var.end = var.end + var.offset;
 		}
 	}
-	//printList(*stack_b);
+//	printList(*stack_b);
 }
 
 void	sort_list(t_list **stack_a, t_list **stack_b)

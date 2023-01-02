@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:47:58 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/01 15:39:26 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/03 00:14:11 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 # include<stdlib.h>
 # include<stdio.h>
 # include<limits.h>
+
+typedef struct variable_list
+{
+	int	size;
+	int middle;
+	int offset;
+	int start;
+	int end;
+}			list;
 
 typedef struct s_list
 {
