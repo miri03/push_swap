@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:00:43 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/01 22:02:26 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/02 23:08:27 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,92 +82,92 @@ int	ft_n(t_list *stack_a)
 	if (size <= 10)
 		n = 5;
 	else if (size <= 150)
-		n = 8;
+		n = 10;
 	else if (size > 150)
-		n = 18;
+		n = 20;
 	return (n);
+}
+
+void	sort_b(t_list **stack_a, t_list **stack_b, int nb, int middle)
+{
+	t_list	*tmp;
+	int		index;
+
+	tmp = *stack_a;
+	index = 0;
+	while (tmp->content != nb)
+	{
+		index++;
+		tmp = tmp->next;
+	}
+	while ((*stack_a)->content != nb)
+	{
+		if (index < ft_lstsize(*stack_a) / 2)
+			rotate_a(stack_a, 0);
+		else
+			rev_rotate_a(stack_a, 0);
+	}
+	push_b(stack_a, stack_b);
+	if (nb < middle)
+		rotate_b(stack_b, 0);
+}
+
+int	chunk(t_list **stack_a, t_list **stack_b, int start, int end, int middle, int *array, int size)
+{
+	t_list	*tmp;
+
+	tmp = *stack_a;
+	while (tmp != NULL)
+	{
+		if (start < 0 || end > size)
+		{
+			while (ft_lstsize(*stack_a) > 0)
+			{
+				push_b(stack_a, stack_b);
+				if ((*stack_b)->content < middle)
+					rotate_b(stack_b, 0);
+				return (1);
+			}
+		}
+
+		else if (tmp->content >= array[start] && tmp->content <= array[end])
+		{
+			sort_b(stack_a, stack_b, tmp->content, array[middle]);
+			return (1);
+		}
+		tmp = tmp->next;
+	}
+	return (0);
 }
 
 void	sort_hundred(t_list **stack_a, t_list **stack_b)
 {
-	int		*sorted;
+	int		*array;
+	int		size;
 	int		n;
 	int		middle;
-	int		size;
 	int		offset;
-	int		index;
-	t_list	*tmp;
 	int		start;
 	int		end;
-	int		st;
-	int		content;
 
-	sorted = array_sort(*stack_a);
-	size = ft_lstsize(*stack_a); 
+	size = ft_lstsize(*stack_a);
 	n = ft_n(*stack_a);
-	middle = ft_lstsize(*stack_a) / 2;
+	middle = size / 2;
 	offset = size / n;
 	start = middle - offset;
 	end = middle + offset;
-	st = start;
-	while (ft_lstsize(*stack_a) > 1)
+	array = array_sort(*stack_a);
+	while ((*stack_a) != NULL)
 	{
-		st = start;
-	//	while (start >= 0)
-	//	{
-			while (st <= end)
-			{
-			tmp = *stack_a;
-			index = 0;		
-
-			while (tmp->next != NULL)
-			{
-				if (tmp->content == sorted[st])
-				{
-			//		printf("num=%d st=%d end=%d\n", sorted[st],st,end);
-					if (index < ft_lstsize(*stack_a)/2)//		if first
-					{
-						while ((*stack_a)->content != sorted[st])
-							rotate_a(stack_a, 0);
-					}
-					else
-					{
-						while ((*stack_a)->content != sorted[st])
-							rev_rotate_a(stack_a, 0);
-					}
-					if (*stack_b != NULL)
-						content = (*stack_b)->content;
-					push_b(stack_a, stack_b);
-				//	printf("stack_b->%d\n",content);
-					if (sorted[st] < content && ft_lstsize(*stack_b) > 1)
-						rotate_b(stack_b, 0);
-				//	printf("\n------------\n");
-				//	printList(*stack_b);
-				//	printf("------------\n\n");
-					break ;
-				}
-				index++;
-				tmp = tmp->next;
-			}
-			st++;
+		while (!chunk(stack_a, stack_b, start, end, middle, array, size)) 
+		{
+			start = start - offset;
+			end = end + offset;
+		//	if (end > size || start < 0)
+		//		break;
 		}
-		//	printf("st=%d end=%d\n",st,end);
-		//	if (st >= end)
-		//	{
-		//		printf("KO\n");
-		//	}
-		end += offset;
-		start -= offset;
-	//	printf("end=%d start=%d size=%d\n",end,start,ft_lstsize(*stack_a));
-	
-	//	}
-	//	if (start < 0 && ft_lstsize(*stack_a) > 1)
-	//		break ;
 	}
-	if (ft_lstsize(*stack_a) == 1)
-		push_b(stack_a,stack_b);
-	printf("end\n");
-	printList(*stack_b);
+	//printList(*stack_b);
 }
 
 void	sort_list(t_list **stack_a, t_list **stack_b)
@@ -191,3 +191,4 @@ void	sort_list(t_list **stack_a, t_list **stack_b)
 			*/
 	}
 }
+

@@ -6,7 +6,7 @@
 #    By: meharit <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/17 19:37:49 by meharit           #+#    #+#              #
-#    Updated: 2022/12/27 13:12:25 by meharit          ###   ########.fr        #
+#    Updated: 2023/01/02 20:35:01 by meharit          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ LIBC = ar -rc
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	cc $(OBJ) -o $(NAME)
+	cc $(OBJ) -o $(NAME) 
 
 clean: 
 	$(RM) $(OBJ)

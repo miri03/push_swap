@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/01 15:31:26 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/02 16:52:30 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,16 @@ int main(int argc, char **argv)
 
 //	printList(stack_a);
 //	printf("--------\n");
+
 	sort_list(&stack_a, &stack_b);
+
 //	printf("--------\n");
 //	printList(stack_a);
 //
 //	deleteList(&stack_a); //
 //	deleteList(&stack_b); //
 
+//	sort_b(&stack_a, &stack_b, 5, 6);
 
 
 //	system("leaks push_swap");
