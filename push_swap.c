@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/02 16:52:30 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/03 17:57:21 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void printList(t_list *head) //print stack
 {
     t_list *temp = head;
 
-    while (temp != NULL)
+  	while (temp != NULL)
     {
          printf("%d\n", temp->content);
          temp = temp->next;
@@ -98,15 +98,14 @@ int main(int argc, char **argv)
 //	printList(stack_a);
 //	printf("--------\n");
 
-	sort_list(&stack_a, &stack_b);
 
+	sort_list(&stack_a, &stack_b);
+	
 //	printf("--------\n");
 //	printList(stack_a);
 //
 //	deleteList(&stack_a); //
 //	deleteList(&stack_b); //
-
-//	sort_b(&stack_a, &stack_b, 5, 6);
 
 
 //	system("leaks push_swap");

@@ -6,7 +6,7 @@
 #    By: meharit <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/17 19:37:49 by meharit           #+#    #+#              #
-#    Updated: 2023/01/02 20:35:01 by meharit          ###   ########.fr        #
+#    Updated: 2023/01/03 14:55:05 by meharit          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ CFILES = push_swap.c \
 		 utilit1.c \
 		 sort.c \
 		 sort_u.c \
+		 sort_u1.c \
+		 hundred_u.c \
 
 OBJ = push_swap.o \
 	  lib.o \
@@ -37,6 +39,8 @@ OBJ = push_swap.o \
 	  utilit1.o \
 	  sort.o \
 	  sort_u.o \
+	  sort_u1.o \
+	  hundred_u.o \
 
 
 RM = rm -rf 

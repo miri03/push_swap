@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:47:58 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/03 00:14:11 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/03 17:20:14 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct variable_list
 	int middle;
 	int offset;
 	int start;
-	int end;
+	int	end;
 }			list;
 
 typedef struct s_list
@@ -67,14 +67,20 @@ void		sort_list(t_list **stack_a, t_list **stack_b);
 void		sort_three(t_list **stack_a);
 
 int			is_sorted(t_list *stack);
+int			is_rev_sorted(t_list *stack);
 void		sort_three_s(t_list *first, t_list *second, t_list **stack_a);
 void		utiliti(t_list **stack_a, t_list **stack_b);
 int			min_value(t_list *head);
 int			ft_check_pb(t_list **stack_a, t_list **stack_b);
 
-
 int			*array_sort(t_list *stack_a);
 
-t_list		*copy_stack(t_list *stack_a);
+int			is_rev_sorted(t_list *stack);
+int			ft_n(t_list *stack_a);
+int			max_value(t_list *stack);
+int			next_max(t_list *stack, int max);
+int			chunk(t_list **stack_a, t_list **stack_b, list var, int *array);
+void		sort_b(t_list **stack_a, t_list **stack_b, int nb, int middle);
+int			last(t_list *stack);
 
 #endif
