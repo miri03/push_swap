@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/04 00:25:35 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/04 23:24:58 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,34 +80,11 @@ int main(int argc, char **argv)
 	stack_a = make_stack(argv, argc - 1);
 	if (check_doubles(stack_a) == 0)
 		error();
-
-/*
-	swap_a(stack_a, 0);
-	swap_b(stack_b, 0);
-	swap_a_b(stack_a, stack_b);
-	push_a(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
-	rotate_a(&stack_a, 0);
-	rotate_b(&stack_b, 0);
-	rotate_a_b(&stack_a, &stack_b);
-	rev_rotate_a(&stack_a, 0);
-	rev_rotate_b(&stack_b, 0);
-	rev_rotate(&stack_a, &stack_b);
-*/
-
-//	printList(stack_a);
-//	printf("--------\n");
-
-
 	sort_list(&stack_a, &stack_b);
 	
-//	printf("--------\n");
-//	printList(stack_a);
-//
-//	deleteList(&stack_a); //
-//	deleteList(&stack_b); //
+	deleteList(&stack_a); //
+	deleteList(&stack_b); //
 
-
-	system("leaks push_swap");
+//	system("leaks push_swap");
 }
 

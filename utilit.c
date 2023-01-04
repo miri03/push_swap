@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 20:40:08 by meharit           #+#    #+#             */
-/*   Updated: 2022/12/27 17:30:15 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/04 22:38:22 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,28 @@ int	is_valide(char **s, int argc)
 	return (1);
 }
 
+int	only_space(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ' ')
+			i++;
+		else 
+			return (0);
+	}
+	return (1);
+}
+
 int	check_error(char *s)
 {
 	int	i;
 
 	i = 0;
+	if (only_space(s))
+		return (0);
 	if (s[i] == '\0')
 		return (0);
 	while (s[i] != '\0')

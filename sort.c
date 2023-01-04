@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:00:43 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/04 00:54:49 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/04 23:25:31 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,40 +71,13 @@ void	sort_five(t_list **stack_a, t_list **stack_b)
 		push_a(stack_a, stack_b);
 }
 
-void	sort_hundred(t_list **stack_a, t_list **stack_b)
+void	push_to_a(t_list **stack_a, t_list **stack_b, list var, int *array)
 {
-	list	var;
-	int		*array;
-
-	t_list	*tmp;
-	int		max;
-	int		index;
-
 	int		i;
 	int		sa;
-
-	var.size = ft_lstsize(*stack_a);
-	var.middle = (var.size) / 2;
-	var.offset = (var.size) / ft_n(*stack_a);
-	var.start = var.middle - var.offset;
-	var.end = var.middle + var.offset;
-	array = array_sort(*stack_a);
-
-	while ((*stack_a) != NULL)
-	{
-		while (!chunk(stack_a, stack_b, var, array)) 
-		{
-			var.start = var.start - var.offset;
-			var.end = var.end + var.offset;
-		}
-	}
-	if (is_rev_sorted(*stack_b))
-	{
-		while ((*stack_b) != NULL)
-			push_a(stack_a, stack_b);
-	}
-	//	printList(*stack_b);
-/* --------- push to a ------------ */
+	int		max;
+	t_list	*tmp;
+	int		index;
 
 	i = var.size - 2;
 	while ((*stack_b) != NULL)
@@ -148,10 +121,40 @@ void	sort_hundred(t_list **stack_a, t_list **stack_b)
 		{
 		//	printf("OK\n\n");
 			swap_a(stack_a, 0);
-		//	i--;
+			i--;
 		}
 		
 	}
+}
+
+void	sort_hundred(t_list **stack_a, t_list **stack_b)
+{
+	list	var;
+	int		*array;
+
+	var.size = ft_lstsize(*stack_a);
+	var.middle = (var.size) / 2;
+	var.offset = (var.size) / ft_n(*stack_a);
+	var.start = var.middle - var.offset;
+	var.end = var.middle + var.offset;
+	array = array_sort(*stack_a);
+
+	while ((*stack_a) != NULL)
+	{
+		while (!chunk(stack_a, stack_b, var, array)) 
+		{
+			var.start = var.start - var.offset;
+			var.end = var.end + var.offset;
+		}
+	}
+	if (is_rev_sorted(*stack_b))
+	{
+		while ((*stack_b) != NULL)
+			push_a(stack_a, stack_b);
+	}
+	//	printList(*stack_b);
+
+	push_to_a(stack_a, stack_b, var, array);
 	free(array);
 }
 
