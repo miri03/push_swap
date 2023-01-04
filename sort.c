@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:00:43 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/03 18:09:58 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/04 00:54:49 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,9 @@ void	sort_hundred(t_list **stack_a, t_list **stack_b)
 	t_list	*tmp;
 	int		max;
 	int		index;
-	int		new_max;
+
+	int		i;
+	int		sa;
 
 	var.size = ft_lstsize(*stack_a);
 	var.middle = (var.size) / 2;
@@ -101,42 +103,56 @@ void	sort_hundred(t_list **stack_a, t_list **stack_b)
 		while ((*stack_b) != NULL)
 			push_a(stack_a, stack_b);
 	}
-	printList(*stack_b);
+	//	printList(*stack_b);
 /* --------- push to a ------------ */
 
+	i = var.size - 2;
 	while ((*stack_b) != NULL)
 	{
+		sa = 0;
+//		printf("array=%d\n", array[i]);
 		max = max_value(*stack_b);
-		new_max = next_max(*stack_b, max);
-		if ((*stack_b)->content == max)
+		tmp = *stack_b;
+		index = 0;
+		while (tmp->content != max)
 		{
-			push_a(stack_a, stack_b);
+			index++;
+			tmp = tmp->next;
 		}
-		else
+		while ((*stack_b)->content != max)
 		{
-			tmp = *stack_b;
-			index = 0;
-			while (tmp->content != max)
+			if (index <= ft_lstsize(*stack_b) / 2)
 			{
-				index++;
-				tmp = tmp->next;
-			}
-			while ((*stack_b)->content != max)
-			{
-				if ((*stack_b)->content == new_max)
+				if ((*stack_b)->content == array[i])
 				{
 					push_a(stack_a, stack_b);
-					index++;
+					sa = 1;
 				}
-
-				if (index < ft_lstsize(*stack_b) / 2)
-					rotate_b(stack_b, 0);
 				else
-					rev_rotate_b(stack_b, 0);
+				rotate_b(stack_b, 0);
 			}
-			push_a(stack_a, stack_b);
+			else
+			{
+				if ((*stack_b)->content == array[i])
+				{
+					push_a(stack_a, stack_b);
+					sa = 1;
+				}
+				else
+				rev_rotate_b(stack_b, 0);
+			}
 		}
+		i--;
+		push_a(stack_a, stack_b);
+		if (sa == 1)
+		{
+		//	printf("OK\n\n");
+			swap_a(stack_a, 0);
+		//	i--;
+		}
+		
 	}
+	free(array);
 }
 
 void	sort_list(t_list **stack_a, t_list **stack_b)

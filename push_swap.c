@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/03 17:57:21 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/04 00:25:35 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,6 @@ int main(int argc, char **argv)
 //	deleteList(&stack_b); //
 
 
-//	system("leaks push_swap");
+	system("leaks push_swap");
 }
 
