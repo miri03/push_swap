@@ -6,11 +6,23 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:40:36 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/03 16:57:04 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/05 20:44:00 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"swap.h"
+
+void	free_str(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+}
 
 int	ft_check_pb(t_list **stack_a, t_list **stack_b)
 {
@@ -22,63 +34,51 @@ int	ft_check_pb(t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-t_list*	copy_stack(t_list *stack_a)
+void	ft_swap(int *a, int *b)
 {
-    t_list* copy_head = malloc(sizeof(t_list*));
-    t_list* copy_tail = copy_head;
+	int	c;
 
-    t_list* curr = stack_a;
-    while (curr != NULL)
-	{
-        copy_tail->next = malloc(sizeof(t_list*));
-        copy_tail->next->content = curr->content;
-        copy_tail = copy_tail->next;
-        curr = curr->next;
-    }
-
-    copy_tail->next = NULL;
-
-    return copy_head->next;
+	c = *a;
+	*a = *b;
+	*b = c;
 }
 
-int	min_array(t_list *stack_a, int min)
+void	ft_sort_int_tab(int *tab, int size)
 {
-	int	new_min;
+	int	count;
+	int	i;
 
-	new_min = stack_a->content;
-	while (stack_a != NULL)
+	i = 0;
+	while (i < size)
 	{
-		if (stack_a->next != NULL && (stack_a->content == min || min >= new_min))
+		count = i + 1;
+		while (count < size)
 		{
-			if (stack_a->next != NULL && stack_a->content > min)
-				new_min = stack_a->content; //
-			stack_a = stack_a->next;
+			if (tab[i] > tab[count])
+				ft_swap(&tab[i], &tab[count]);
+			count++;
 		}
-		if (min > new_min || (stack_a->content < new_min && stack_a->content > min))
-			new_min = stack_a->content;
-		stack_a = stack_a->next;
+		i++;
 	}
-	return (new_min);
 }
 
 int	*array_sort(t_list *stack_a)
 {
-	int	min;
-	int	*array;
-	int	size;
-	int	i;
+	int		*array;
+	t_list	*tmp;
+	int		i;
 
 	i = 0;
-	min = min_value(stack_a);
-	size = ft_lstsize(stack_a);
-	array = (int*)malloc(sizeof(int) * size);
-	array[i] = min;
-	i++;
-	while (size > i)
+	array = (int *)malloc(sizeof(int) * ft_lstsize(stack_a));
+	if (array == NULL)
+		return (NULL);
+	tmp = stack_a;
+	while (tmp != NULL)
 	{
-		array[i] = min_array(stack_a, min);
-		min = min_array(stack_a, min);
+		array[i] = tmp->content;
+		tmp = tmp->next;
 		i++;
 	}
+	ft_sort_int_tab(array, ft_lstsize(stack_a));
 	return (array);
 }

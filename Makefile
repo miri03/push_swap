@@ -16,32 +16,30 @@ CFLAGS = -Wall -Wextra -Werror
 
 CFILES = push_swap.c \
 		 lib.c \
-		 lib1.c \
 		 split.c \
 		 instr.c \
 		 instr1.c \
 		 instr2.c \
 		 utilit.c \
-		 utilit1.c \
 		 sort.c \
 		 sort_u.c \
 		 sort_u1.c \
 		 hundred_u.c \
+		 hundred_u1.c \
+
 
 OBJ = push_swap.o \
 	  lib.o \
-	  lib1.o \
 	  split.o \
 	  instr.o \
 	  instr1.o \
 	  instr2.o \
 	  utilit.o \
-	  utilit1.o \
 	  sort.o \
 	  sort_u.o \
 	  sort_u1.o \
 	  hundred_u.o \
-
+	  hundred_u1.o
 
 RM = rm -rf 
 

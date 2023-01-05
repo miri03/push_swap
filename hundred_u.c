@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:50:07 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/04 23:15:02 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/05 19:06:00 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sort_b(t_list **stack_a, t_list **stack_b, int nb, int middle)
 		rotate_b(stack_b, 0);
 }
 
-int	chunk(t_list **stack_a, t_list **stack_b, list var, int *array)
+int	chunk(t_list **stack_a, t_list **stack_b, t_var_li var, int *array)
 {
 	t_list	*tmp;
 
@@ -53,7 +53,8 @@ int	chunk(t_list **stack_a, t_list **stack_b, list var, int *array)
 				return (1);
 			}
 		}
-		if (tmp->content >= array[(var.start)] && tmp->content <= array[(var.end)])
+		if (tmp->content >= array[(var.start)]
+			&& tmp->content <= array[(var.end)])
 		{
 			sort_b(stack_a, stack_b, tmp->content, array[var.middle]);
 			return (1);
@@ -73,29 +74,10 @@ int	max_value(t_list *stack)
 	while (current != NULL)
 	{
 		if (current->content > max)
-			max  = current->content;
+			max = current->content;
 		current = current->next;
 	}
 	return (max);
-}
-
-int	next_max(t_list *stack, int max)
-{
-	int		 next_max;
-	t_list	*current;
-
-	if (ft_lstsize(stack) == 1)
-		return (max);
-	current = stack->next;
-	next_max = current->content;
-
-	while (current != NULL)
-	{
-		if (current->content != max && current->content > next_max)
-			next_max = current->content;
-		current  = current->next;
-	}
-	return (next_max);
 }
 
 int	is_rev_sorted(t_list *stack)
@@ -126,11 +108,3 @@ int	ft_n(t_list *stack_a)
 		n = 18;
 	return (n);
 }
-
-int	last(t_list *stack)
-{
-	while (stack->next != NULL)
-		stack = stack->next;
-	return (stack->content);
-}
-

@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:47:58 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/04 23:21:25 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/05 21:00:06 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,18 @@
 typedef struct variable_list
 {
 	int	size;
-	int middle;
-	int offset;
-	int start;
+	int	middle;
+	int	offset;
+	int	start;
 	int	end;
-}			list;
+}			t_var_li;
+
+typedef struct variables
+{
+	int	max;
+	int	i;
+	int	index;
+}			t_v_li;
 
 typedef struct s_list
 {
@@ -34,20 +41,25 @@ typedef struct s_list
 }				t_list;
 
 void		printList(t_list *head); //
-int			is_valide(char **s, int argc);
-int			check_error(char *s);
+
 t_list		*ft_lstnew(int content);
 t_list		*ft_lstlast(t_list *lst);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstadd_front(t_list **lst, t_list *new);
+int			ft_lstsize(t_list *lst);
+t_list		*ft_lstnew(int content);
+t_list		*ft_newlast(t_list *stack);
+
+void		add_in_stack(t_list **stack_a, char **str);
+int			is_valide(char **s, int argc);
+int			check_error(char *s);
+
 int			ft_isdigit(int c);
 int			ft_size(char const *s, char c);
 int			ft_atoi(const char *str);
 char		**ft_split(char const *s, char c);
 int			check_doubles(t_list *stack_a);
-int			ft_lstsize(t_list *lst);
-t_list		*ft_lstnew(int content);
-t_list		*ft_newlast(t_list *stack);
+
 void		error(void);
 void		free_str(char **str);
 
@@ -65,22 +77,23 @@ void		rev_rotate(t_list **stack_a, t_list **stack_b);
 
 void		sort_list(t_list **stack_a, t_list **stack_b);
 void		sort_three(t_list **stack_a);
-
 int			is_sorted(t_list *stack);
-int			is_rev_sorted(t_list *stack);
 void		sort_three_s(t_list *first, t_list *second, t_list **stack_a);
 void		utiliti(t_list **stack_a, t_list **stack_b);
 int			min_value(t_list *head);
 int			ft_check_pb(t_list **stack_a, t_list **stack_b);
 
 int			*array_sort(t_list *stack_a);
-
 int			is_rev_sorted(t_list *stack);
 int			ft_n(t_list *stack_a);
 int			max_value(t_list *stack);
-int			next_max(t_list *stack, int max);
-int			chunk(t_list **stack_a, t_list **stack_b, list var, int *array);
+int			chunk(t_list **stack_a, t_list **stack_b, t_var_li var, int *array);
 void		sort_b(t_list **stack_a, t_list **stack_b, int nb, int middle);
-int			last(t_list *stack);
+
+int			is_sa(t_list **stack_a, t_list **stack_b, int *array, t_v_li vrb);
+int			sa_rev_or_rotate(t_list **stack_a, t_list **stack_b, t_v_li vrb,
+				int *array);
+void		push_to_a(t_list **stack_a, t_list **stack_b, t_var_li var,
+				int *array);
 
 #endif

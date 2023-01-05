@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/04 23:24:58 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/05 20:54:47 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,11 @@ void printList(t_list *head) //print stack
 	printf("NULL\n");
 }
 
-void	deleteList(t_list** head_ref) //
-{
-	t_list* current = *head_ref;
-	t_list* next;
-
-	while (current != NULL)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
-	*head_ref = NULL;
-}
-
 t_list	*make_stack(char **args, int argc)
 {
 	char	**str;
 	t_list	*stack_a;
 	int		i;
-	int		j;
 
 	stack_a = NULL;
 	i = 1;
@@ -53,14 +38,7 @@ t_list	*make_stack(char **args, int argc)
 		{
 			str = ft_split(args[i], ' ');
 			i++;
-			j = 0;
-			while (str[j] != NULL)
-			{
-				ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(str[j])));
-				j++;
-			}
-			free_str(str);
-			free(str);
+			add_in_stack(&stack_a, str);
 		}
 	}
 	else
@@ -68,7 +46,7 @@ t_list	*make_stack(char **args, int argc)
 	return (stack_a);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
@@ -81,10 +59,5 @@ int main(int argc, char **argv)
 	if (check_doubles(stack_a) == 0)
 		error();
 	sort_list(&stack_a, &stack_b);
-	
-	deleteList(&stack_a); //
-	deleteList(&stack_b); //
-
-//	system("leaks push_swap");
+	//system("leaks push_swap");
 }
-

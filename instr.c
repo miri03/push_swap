@@ -51,22 +51,6 @@ void	swap_a_b(t_list *stack_a, t_list *stack_b)
 	write(1, "ss\n", 3);
 }
 
-/*
-void	push_b(t_list **stack_a, t_list **stack_b)
-{
-	t_list	*tmp_a;
-	t_list	*tmp_b;
-
-	if (ft_lstsize(*stack_a) < 1)
-		return ;
-	tmp_a = (*stack_a)->next;
-	tmp_b = *stack_b;
-	*stack_b = *stack_a;
-	(*stack_b)->next = tmp_b;
-	*stack_a = tmp_a;
-	write(1, "pb\n", 3);
-}*/
-
 void	push_b(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*tmp_a;

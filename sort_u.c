@@ -6,11 +6,17 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:03:07 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/03 16:49:31 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/05 16:58:59 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swap.h"
+
+void	error(void)
+{
+	write (2, "Error\n", 6);
+	exit(1);
+}
 
 int	is_sorted(t_list *stack)
 {
@@ -54,3 +60,17 @@ int	min_value(t_list *head)
 	return (min);
 }
 
+int	is_valide(char **s, int argc)
+{
+	int	i;
+
+	i = 1;
+	while (i <= argc)
+	{
+		if (check_error(s[i]))
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}

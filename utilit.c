@@ -6,37 +6,22 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 20:40:08 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/04 22:38:22 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/05 21:27:06 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swap.h"
 
-int	is_valide(char **s, int argc)
-{
-	int	i;
-
-	i = 1;
-	while (i <= argc)
-	{
-		if (check_error(s[i]))
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
 int	only_space(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == ' ')
 			i++;
-		else 
+		else
 			return (0);
 	}
 	return (1);
