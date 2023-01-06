@@ -6,12 +6,16 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:47:58 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/05 21:00:06 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/06 13:13:16 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SWAP_H
 # define SWAP_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4
+# endif
 
 # include<unistd.h>
 # include<stdlib.h>
@@ -65,15 +69,15 @@ void		free_str(char **str);
 
 void		swap_a(t_list **stack_a, int ss);
 void		swap_b(t_list **stack_b, int ss);
-void		swap_a_b(t_list *stack_a, t_list *stack_b);
+void		swap_a_b(t_list *stack_a, t_list *stack_b, int ss);
 void		push_b(t_list **stack_a, t_list **stack_b);
 void		push_a(t_list **stack_a, t_list **stack_b);
 void		rotate_a(t_list **stack_a, int rr);
 void		rotate_b(t_list **stack_b, int rr);
-void		rotate_a_b(t_list **stack_a, t_list **stack_b);
+void		rotate_a_b(t_list **stack_a, t_list **stack_b, int rr);
 void		rev_rotate_a(t_list **stack_a, int rrr);
 void		rev_rotate_b(t_list **stack_b, int rrr);
-void		rev_rotate(t_list **stack_a, t_list **stack_b);
+void		rev_rotate(t_list **stack_a, t_list **stack_b, int rrr);
 
 void		sort_list(t_list **stack_a, t_list **stack_b);
 void		sort_three(t_list **stack_a);
@@ -95,5 +99,17 @@ int			sa_rev_or_rotate(t_list **stack_a, t_list **stack_b, t_v_li vrb,
 				int *array);
 void		push_to_a(t_list **stack_a, t_list **stack_b, t_var_li var,
 				int *array);
+
+char	*ft_read(char *string, int fd);
+char	*get_next_line(int fd);
+char	*ft_strjoin(char *s1, char *s2);
+int		new_line(char *str);
+size_t	ft_strlen(const char *s);
+char	*ft_remain(char *s);
+char	*ft_line(char *s);
+char	*ft_strdup(const char *s1);
+
+void	push_a_bonus(t_list **stack_a, t_list **stack_b, int pa);
+void	push_b_bonus(t_list **stack_a, t_list **stack_b, int pb);
 
 #endif

@@ -6,11 +6,19 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:04:19 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/05 20:55:47 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/06 13:22:26 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"swap.h"
+
+void	rev_rotate(t_list **stack_a, t_list **stack_b, int rrr)
+{
+	rev_rotate_a(stack_a, 1);
+	rev_rotate_b(stack_b, 1);
+	if (rrr == 0)
+		write(1, "rrr\n", 4);
+}
 
 t_list	*ft_newlast(t_list	*stack)
 {
@@ -24,13 +32,6 @@ t_list	*ft_newlast(t_list	*stack)
 			return (stack);
 	}
 	return (NULL);
-}
-
-void	rev_rotate(t_list **stack_a, t_list **stack_b)
-{
-	rev_rotate_a(stack_a, 1);
-	rev_rotate_b(stack_b, 1);
-	write(1, "rrr\n", 4);
 }
 
 void	ft_lstadd_front(t_list **lst, t_list *new)

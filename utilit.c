@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "swap.h"
+#include "swap_bonus.h"
 
 int	only_space(char *str)
 {

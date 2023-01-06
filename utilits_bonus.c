@@ -6,30 +6,42 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 22:04:32 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/05 22:11:54 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/06 15:55:35 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "swap_bonus.h"
+#include "swap.h"
 
-t_list	*make_stack(char **args, int argc)
+void	push_a_bonus(t_list **stack_a, t_list **stack_b, int pa)
 {
-	char	**str;
-	t_list	*stack_a;
-	int		i;
+	t_list	*tmp_a;
+	t_list	*tmp_b;
 
-	stack_a = NULL;
-	i = 1;
-	if (is_valide(args, argc))
+	if (ft_lstsize(*stack_b) > 0)
 	{
-		while (i <= argc)
-		{
-			str = ft_split(args[i], ' ');
-			i++;
-			add_in_stack(&stack_a, str);
-		}
+		tmp_b = (*stack_b)->next;
+		tmp_a = *stack_a;
+		*stack_a = *stack_b;
+		(*stack_a)->next = tmp_a;
+		*stack_b = tmp_b;
 	}
-	else
-		error();
-	return (stack_a);
+    if (pa == 0)
+	    write(1, "pa\n", 3);
+}
+
+void	push_b_bonus(t_list **stack_a, t_list **stack_b, int pb)
+{
+	t_list	*tmp_a;
+	t_list	*tmp_b;
+
+	if (ft_lstsize(*stack_a) > 0)
+	{
+		tmp_a = (*stack_a)->next;
+		tmp_b = *stack_b;
+		*stack_b = *stack_a;
+		(*stack_b)->next = tmp_b;
+		*stack_a = tmp_a;
+	}
+    if (pb == 0)
+	    write(1, "pb\n", 3);
 }
