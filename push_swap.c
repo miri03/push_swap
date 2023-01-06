@@ -6,23 +6,11 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:02:01 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/05 22:09:57 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/06 16:36:26 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "swap.h"
-
-void printList(t_list *head) //print stack
-{
-    t_list *temp = head;
-
-  	while (temp != NULL)
-    {
-         printf("%d\n", temp->content);
-         temp = temp->next;
-    }
-	printf("NULL\n");
-}
 
 t_list	*make_stack(char **args, int argc)
 {
@@ -59,5 +47,4 @@ int	main(int argc, char **argv)
 	if (check_doubles(stack_a) == 0)
 		error();
 	sort_list(&stack_a, &stack_b);
-	//system("leaks push_swap");
 }

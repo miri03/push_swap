@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:47:58 by meharit           #+#    #+#             */
-/*   Updated: 2023/01/06 13:13:16 by meharit          ###   ########.fr       */
+/*   Updated: 2023/01/06 16:58:25 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ typedef struct s_list
 	int				content;
 	struct s_list	*next;
 }				t_list;
-
-void		printList(t_list *head); //
 
 t_list		*ft_lstnew(int content);
 t_list		*ft_lstlast(t_list *lst);
@@ -100,16 +98,18 @@ int			sa_rev_or_rotate(t_list **stack_a, t_list **stack_b, t_v_li vrb,
 void		push_to_a(t_list **stack_a, t_list **stack_b, t_var_li var,
 				int *array);
 
-char	*ft_read(char *string, int fd);
-char	*get_next_line(int fd);
-char	*ft_strjoin(char *s1, char *s2);
-int		new_line(char *str);
-size_t	ft_strlen(const char *s);
-char	*ft_remain(char *s);
-char	*ft_line(char *s);
-char	*ft_strdup(const char *s1);
+char		*ft_read(char *string, int fd);
+char		*get_next_line(int fd);
+char		*ft_strjoin(char *s1, char *s2);
+int			new_line(char *str);
+size_t		ft_strlen(const char *s);
+char		*ft_remain(char *s);
+char		*ft_line(char *s);
+char		*ft_strdup(const char *s1);
 
-void	push_a_bonus(t_list **stack_a, t_list **stack_b, int pa);
-void	push_b_bonus(t_list **stack_a, t_list **stack_b, int pb);
+int			ft_strcmp(char *s1, char *s2);
+
+void		push_a_bonus(t_list **stack_a, t_list **stack_b, int pa);
+void		push_b_bonus(t_list **stack_a, t_list **stack_b, int pb);
 
 #endif
