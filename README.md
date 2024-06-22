@@ -32,8 +32,8 @@ following operations at your disposal:<br>
 ◦rrr : rra and rrb at the same time.</li>
 </ul>
 <h2 class="code-line" data-line-start=32 data-line-end=33 ><a id="Additional_feature_32"></a>Additional feature</h2>
-<p class="has-line-data" data-line-start="33" data-line-end="43">I added a program named <code>checker</code> that takes as an argument the stack a formatted as a list of integers,<br>
-and if it’s given no arguments it stops and displays nothing.<br>
+<p class="has-line-data" data-line-start="33" data-line-end="43">I added a program named <code>checker</code> that takes as an argument the stack a formatted as a list of integers.<br>
+If given no arguments it stops and displays nothing.<br>
 It will then wait and read instructions on the standard input, each instruction will be followed by ’\n’.<br>
 Once all the instructions have been read, the program has to execute them on the stack received as an argument.<br>
 • If after executing those instructions, the stack a is actually sorted and the stack b<br>
